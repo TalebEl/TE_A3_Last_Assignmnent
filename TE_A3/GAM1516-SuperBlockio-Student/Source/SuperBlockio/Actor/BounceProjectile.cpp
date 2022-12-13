@@ -33,7 +33,7 @@ ABounceProjectile::ABounceProjectile()
 	//CREATE the BallSprite Component
     BallSprite = CreateDefaultSubobject<UPaperSpriteComponent>(("BallSprite"));
 	//CALL SetCollisionProfileName() on BallSprite passing in "NoCollision"
-    BallSprite->SetCollisionProfileName(("NoCollision"));
+    BallSprite->SetCollisionProfileName(("NoCollision")); //collision NO COLLSION??
 	//CALL SetCollisionEnabled() on BallSprite passing in ECollisionEnabled::NoCollision
     BallSprite->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 	//CALL SetupAttachment() on BallSprite passing in RootComponent
