@@ -54,6 +54,7 @@ void AONOFFBlock::BeginPlay()
 
     	//CALL BoxCollision->OnComponentHit.RemoveDynamic() passing in this, &AONOFFBlock::OnHit
         BoxCollision->OnComponentHit.RemoveDynamic(this, &AONOFFBlock::OnHit);
+        SetActorEnableCollision(false);
     }
 	//ENDIF
 }
@@ -87,7 +88,7 @@ void AONOFFBlock::SwitchStates()
         else
         {
         	//CALL SetSprite() on BlockSprite passing in --> StaticLoadObject(UPaperSprite::StaticClass(), NULL, TEXT("/Game/Textures/8Bit_ONOFF_SwitchOFF_Sprite")))
-            BlockSprite->SetSprite(Cast<UPaperSprite>(StaticLoadObject(UPaperSprite::StaticClass(), NULL, TEXT("/Game/Textures/8Bit_ONOFF_SwitchON_Sprite"))));
+            BlockSprite->SetSprite(Cast<UPaperSprite>(StaticLoadObject(UPaperSprite::StaticClass(), NULL, TEXT("/Game/Textures/8Bit_ONOFF_SwitchOFF_Sprite")))); 
         }
     	//ENDIF
     }
@@ -104,7 +105,7 @@ void AONOFFBlock::SwitchStates()
         else
         {
         	//CALL SetSprite() on BlockSprite passing in --> StaticLoadObject(UPaperSprite::StaticClass(), NULL, TEXT("/Game/Textures/8Bit_ONOFF_TriggerOFF_Sprite")))
-            BlockSprite->SetSprite(Cast<UPaperSprite>(StaticLoadObject(UPaperSprite::StaticClass(), NULL, TEXT("/Game/Textures/8Bit_ONOFF_SwitchON_Sprite"))));
+            BlockSprite->SetSprite(Cast<UPaperSprite>(StaticLoadObject(UPaperSprite::StaticClass(), NULL, TEXT("/Game/Textures/8Bit_ONOFF_TriggerOFF_Sprite"))));
         }
     	//ENDIF
     }

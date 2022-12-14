@@ -24,6 +24,7 @@ ABounceProjectile::ABounceProjectile()
     SphereComponent = CreateDefaultSubobject<USphereComponent>(("SphereComponent"));
 	//CALL ULockAxisfor2D::LockPhysicsTo2DAxis() passing in SphereComponent
     ULockAxisfor2D::LockPhysicsTo2DAxis(SphereComponent);
+    SphereComponent->SetCollisionProfileName("BlockAll");
 	//CALL SphereComponent->OnComponentBeginOverlap.AddDynamic() passing in this, &ABounceProjectile::OnOverlapBegin
     SphereComponent->OnComponentBeginOverlap.AddDynamic(this, &ABounceProjectile::OnOverlapBegin);
 	//SET the SphereComponent as the RootComponent 
@@ -39,22 +40,22 @@ ABounceProjectile::ABounceProjectile()
 	//CALL SetupAttachment() on BallSprite passing in RootComponent
     BallSprite->SetupAttachment(RootComponent);
 
+
+
+
+
+
     /** ProjectileMovementComponent  */
 	//CREATE the ProjectileMovementComponent
     ProjectileMovementComponent = CreateDefaultSubobject<UProjectileMovementComponent>(("ProjectileMovementComponent"));
 	//SET the ProjectileMovementComponent->UpdatedComponent to SphereComponent
     ProjectileMovementComponent->UpdatedComponent = SphereComponent;
-
-	//SET ProjectileMovementComponent->bRotationFollowsVelocity to false
     ProjectileMovementComponent->bRotationFollowsVelocity = false;
-
-	//SET ProjectileMovementComponent->bShouldBounce to true
     ProjectileMovementComponent->bShouldBounce = true;
-    
-	//SET ProjectileMovementComponent->ProjectileGravityScale to 0
     ProjectileMovementComponent->ProjectileGravityScale = 0.0f;
-	//SET ProjectileMovementComponent->Bounciness to 1.0
     ProjectileMovementComponent->Bounciness = 1.0;
+
+
 
     //CALL Add() on Tags passing in "Ball"
     Tags.Add("Ball");
