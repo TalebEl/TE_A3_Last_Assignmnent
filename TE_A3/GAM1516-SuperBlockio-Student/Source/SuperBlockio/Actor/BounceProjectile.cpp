@@ -24,7 +24,6 @@ ABounceProjectile::ABounceProjectile()
     SphereComponent = CreateDefaultSubobject<USphereComponent>(("SphereComponent"));
 	//CALL ULockAxisfor2D::LockPhysicsTo2DAxis() passing in SphereComponent
     ULockAxisfor2D::LockPhysicsTo2DAxis(SphereComponent);
-    SphereComponent->SetCollisionProfileName("BlockAll");
 	//CALL SphereComponent->OnComponentBeginOverlap.AddDynamic() passing in this, &ABounceProjectile::OnOverlapBegin
     SphereComponent->OnComponentBeginOverlap.AddDynamic(this, &ABounceProjectile::OnOverlapBegin);
 	//SET the SphereComponent as the RootComponent 

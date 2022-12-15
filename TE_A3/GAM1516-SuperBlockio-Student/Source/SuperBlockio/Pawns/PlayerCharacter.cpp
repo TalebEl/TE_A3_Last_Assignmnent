@@ -311,12 +311,12 @@ void APlayerCharacter::MoveRight(float value)
 void APlayerCharacter::Shoot()
 {
     //IF Projectile NOT NULL
-    if (Projectile != nullptr)
+    if (Projectile != NULL)
     {
         //DECLARE a variable called World of type UWorld* const and assign it to the return value of GetWorld()
         const UWorld* World = GetWorld();
         //IF World IS NOT NULL
-        if (World != nullptr)
+        if (World != NULL)
         {
             //IF bCanShoot IS true
             if (bCanShoot == true)
@@ -329,7 +329,7 @@ void APlayerCharacter::Shoot()
                 //SET SpawnParams.Owner to this
                 SpawnParams.Owner = this;
                 //SET SpawnParams.Instigator to the return value of GetInstigator()
-                SpawnParams.Instigator = GetInstigator(); // ??
+                SpawnParams.Instigator = GetInstigator();
                 //SET SpawnParams.SpawnCollisionHandlingOverride to ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn
                 SpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn;
                 //DECLARE a variable called SpawnLocation of type FVector and assign it to the return value of PlayerSprite->GetSocketLocation("Ball")
@@ -340,7 +340,7 @@ void APlayerCharacter::Shoot()
                 ABounceProjectile* BounceProjectile = Cast<ABounceProjectile>(GetWorld()->SpawnActor<ABounceProjectile>(Projectile, SpawnLocation, FRotator(0, 0, 0), SpawnParams));
 
                 //IF BounceProjectile NOT NULL
-                if (BounceProjectile != nullptr)
+                if (BounceProjectile != NULL)
                 {
                     //IF DirectionEnum IS EDirectionEnum::DE_Left
                     if (DirectionEnum == EDirectionEnum::DE_Left)
@@ -370,7 +370,7 @@ void APlayerCharacter::HasDied()
     ASuperBlockioGameModeBase* Gamemode = Cast<ASuperBlockioGameModeBase>(GetWorld()->GetAuthGameMode());
 
     //IF Gamemode NOT NULL
-    if (Gamemode != nullptr)
+    if (Gamemode != NULL)
     {
         //CALL OnDeath() on Gamemode
         Gamemode->OnDeath();
@@ -402,7 +402,7 @@ void APlayerCharacter::OnOverlap(UPrimitiveComponent* OverlappedComp, AActor* Ot
             ASuperBlockioGameStateBase* gamestate = GetWorld()->GetGameState<ASuperBlockioGameStateBase>();
 
             //IF gamestate NOT NULL
-            if(gamestate != nullptr)
+            if(gamestate != NULL)
             {
                 //CALL IncreaseCoins() on gamestate passin in 1
                 gamestate->IncreaseCoins(1.0f);

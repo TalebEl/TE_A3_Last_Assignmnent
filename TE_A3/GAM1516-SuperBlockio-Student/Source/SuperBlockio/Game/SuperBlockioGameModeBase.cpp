@@ -56,7 +56,7 @@ void ASuperBlockioGameModeBase::OnDeath()
     	//CALL SetActorLocation() on PlayerCharacter passing in GameState->GetCheckpointLocation()
         PlayerCharacter->SetActorLocation(GameState->GetCheckpointLocation());
     	//CALL IncreaseLives() on GameState passing in -1
-        GameState->IncreaseLives(-1.0f);
+        GameState->IncreaseLives(-1);
     }
     //ELSE
     else
@@ -66,7 +66,7 @@ void ASuperBlockioGameModeBase::OnDeath()
     	//SET PlayerCharacter to the return of --> GetWorld() != nullptr ? Cast<APlayerCharacter>(GetWorld()->GetFirstPlayerController()->GetPawn()) : nullptr
         PlayerCharacter = GetWorld() != nullptr ? Cast<APlayerCharacter>(GetWorld()->GetFirstPlayerController()->GetPawn()) : nullptr;
     	//CALL Destroy() on PlayerCharacter
-
+        PlayerCharacter->Destroy();
         /*Show GameOver*/
     	//CALL GameOver()
         GameOver();

@@ -10,11 +10,11 @@
 ASuperBlockioGameStateBase::ASuperBlockioGameStateBase()
 {
 	//SET PlayerLives to 5
-    
+    PlayerLives = 5;
 	//SET PlayerScore to 0
-    
+    PlayerScore = 0;
 	//SET PlayerCoins to 0
-    
+    PlayerCoins = 0;
 }
 
 void ASuperBlockioGameStateBase::BeginPlay()

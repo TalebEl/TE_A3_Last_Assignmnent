@@ -43,7 +43,7 @@ void AAICharacter::Tick(float DeltaTime)
 
     /* Patrol Checks */
 	//IF CurrentPatrolPoint NOT NULL
-    if(CurrentPatrolPoint != nullptr)
+    if(CurrentPatrolPoint != NULL)
     {
     	//DECLARE a variable called Delta of type FVector and SET it to GetActorLocation() - CurrentPatrolPoint->GetActorLocation()
         FVector Delta = GetActorLocation() - CurrentPatrolPoint->GetActorLocation();
@@ -92,7 +92,7 @@ void AAICharacter::OnPawnSeen(APawn* SeenPawn)
     }
 
     //SET TargetActor to the SeenPawn (This can now be used to Implement a Chase behavior)
-    SeenPawn = TargetActor; // Check Again(Not sure)
+    TargetActor = SeenPawn;
 
     //CALL DrawDebugSphere() passing in (GetWorld(), SeenPawn->GetActorLocation(), 32.0f, 12, FColor::Red, false, 10.0f)
     DrawDebugSphere(GetWorld(), SeenPawn->GetActorLocation(), 32.0f, 12, FColor::Red, false, 10.0f);
@@ -131,15 +131,15 @@ void AAICharacter::OnNoiseHeard(APawn* NoiseInstigator, const FVector& Location,
 void AAICharacter::Shoot()
 {
     //IF Projectile NOT NULL
-    if(Projectile != nullptr)
+    if(Projectile != NULL)
     {
         //DECLARE a variable called World of type UWorld* const and assign it to the return value of GetWorld()
         const UWorld* World = GetWorld();
         //IF World IS NOT NULL
-        if(World != nullptr)
+        if(World != NULL)
         {
         	//IF TargetActor NOT NULL
-            if(TargetActor != nullptr)
+            if(TargetActor != NULL)
             {
                 /*Spawn Params for our Ball and AI*/
                 //DECLARE a variable called SpawnParams of type FActorSpawnParameters
@@ -217,11 +217,11 @@ void AAICharacter::MoveToNextPatrolPoint()
     if(Length >= 1)
     {
         //DIVIDE Direction.X by Length and Assign it back to Direction.X 
-        Direction.X = Direction.X / Length; // Not sure
+        Direction.X /= Length; //.../= divides the first part by the second part and assigns the result back in.
         //DIVIDE Direction.Y by Length and Assign it back to Direction.Y
-        Direction.Y = Direction.X / Length;
+        Direction.Y /= Length;
         //DIVIDE Direction.Z by Length and Assign it back to Direction.Z
-        Direction.Z = Direction.X / Length;
+        Direction.Z /= Length;
     }
 	//ENDIF
 
